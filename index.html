@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WordPress Post Creator</title>
+    <script src="https://cdn.tiny.cloud/1/j2tuzm5gaxfu4kvc01x0d3v756kfinb4c5fyfvdjlazy4464/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+  tinymce.init({
+    selector: 'textarea'
+  });
+</script>
+
+</head>
+<body>
+    <form action="/" method="post">
+        <label for="keyword">Keyword:</label>
+        <input type="text" id="keyword" name="keyword"><br><br>
+        <label for="title_rule">Title Rule:</label>
+        <input type="text" id="title_rule" name="title_rule"><br><br>
+        
+        <!-- Add 10 context sections -->
+		{% for i in range(1, 11) %}
+		<label for="context{{ i }}_title_rule">Context {{ i }} Title Rule:</label>
+		<input type="text" id="context{{ i }}_title_rule" name="context{{ i }}_title_rule"><br><br>
+		<label for="context{{ i }}">Context {{ i }}:</label>
+		<textarea id="context{{ i }}" name="context{{ i }}"></textarea><br><br>
+		{% endfor %}
+
+        
+        <label for="table">Table:</label>
+        <textarea id="table" name="table"></textarea><br><br>
+        <label for="conclusion">Conclusion:</label>
+        <textarea id="conclusion" name="conclusion"></textarea><br><br>
+        <input type="checkbox" id="save_as_template" name="save_as_template">
+		<label for="save_as_template">Save as template</label>
+
+        <input type="submit" value="Publish">
+    </form>
+</body>
+</html>
